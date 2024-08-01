@@ -26,6 +26,25 @@ function sqrt(num1) {
   return Math.sqrt(num1);
 }
 
+function factorial(num1) {
+  console.log(`num1:`, num1);
+  console.log(`num1 is integer:`, Number.isInteger(num1));
+  if (num1 < 0 || !Number.isInteger(num1)) {
+    alert(`Invalid number. Please try again.`);
+    return undefined; // The test is expecting "undefined". Is this the intended way to get undefined?
+  }
+
+  let result = num1;
+  let nextLowerNum = num1 - 1;
+  
+  while (nextLowerNum > 0) {
+    result = result * nextLowerNum;
+    nextLowerNum--;
+  }
+
+  return result;
+}
+
 
 function calculate(expression) {
   // Split expression into individual tokens
@@ -61,7 +80,7 @@ function calculate(expression) {
     return;
   }
 
-  const validOperators = [`+`, `-`, `*`, `/`, `**`, `%`, `sqrt`]
+  const validOperators = [`+`, `-`, `*`, `/`, `^`, `%`, `sqrt`, `!`]
   
   // Alert if operator is invalid
   if (!validOperators.includes(operator)) {
@@ -81,7 +100,7 @@ function calculate(expression) {
   if (operator === `/`) {
     return divide(num1, num2);
   }
-  if (operator === `**`) {
+  if (operator === `^`) {
     return power(num1, num2);
   }
   if (operator === `%`) {
@@ -89,6 +108,9 @@ function calculate(expression) {
   }
   if (operator === `sqrt`) {
     return sqrt(num1);
+  }
+  if (operator === `!`) {
+    return factorial(num1);
   }
   
 }
