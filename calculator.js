@@ -27,22 +27,23 @@ function sqrt(num1) {
 }
 
 function factorial(num1) {
-  console.log(`num1:`, num1);
-  console.log(`num1 is integer:`, Number.isInteger(num1));
-  if (num1 < 0 || !Number.isInteger(num1)) {
-    alert(`Invalid number. Please try again.`);
-    return undefined; // The test is expecting "undefined". Is this the intended way to get undefined?
-  }
-
-  let result = num1;
-  let nextLowerNum = num1 - 1;
+  // // Using while loop
+  // let result = num1;
+  // let nextLowerNum = num1 - 1;
   
-  while (nextLowerNum > 0) {
-    result = result * nextLowerNum;
-    nextLowerNum--;
-  }
+  // while (nextLowerNum > 0) {
+  //   result = result * nextLowerNum;
+  //   nextLowerNum--;
+  // }
 
-  return result;
+  // return result;
+
+  // Using recursion
+  if (num1 > 1) {
+    return num1 * factorial(num1 - 1)
+  } else {
+    return 1;
+  }
 }
 
 
@@ -88,6 +89,7 @@ function calculate(expression) {
     return;
   }
 
+  // Execute operator function based on value of operator variable
   if (operator === `+`) {
     return add(num1, num2);
   }
@@ -110,6 +112,10 @@ function calculate(expression) {
     return sqrt(num1);
   }
   if (operator === `!`) {
+    if (num1 < 0 || !Number.isInteger(num1)) {
+      alert(`Invalid number. Please try again.`);
+      return;
+    }
     return factorial(num1);
   }
   
