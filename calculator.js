@@ -31,14 +31,29 @@ function calculate(expression) {
   // Split expression into individual tokens
   const tokens = expression.split(` `)
 
-  const operator = tokens[1];
-  const num1 = Number(tokens[0]);
-  const num2 = Number(tokens[2]);
+  let operator;
+  let num1;
+  let num2;
 
-  if (Number.isNaN(num1) || Number.isNaN(num2)) {
-    alert(`Invalid number(s)`);
-    return;
+  if (tokens.length === 3) {
+    operator = tokens[1];
+    num1 = Number(tokens[0]);
+    num2 = Number(tokens[2]);
+
+    if (Number.isNaN(num1) || Number.isNaN(num2)) {
+        alert(`Invalid number(s). Please try again.`);
+        return;
+      }
+    }
+  if (tokens.length === 2) {
+    operator = tokens[0];
+    num1 = Number(tokens[1])
   }
+    if (Number.isNaN(num1)) {
+        alert(`Invalid number. Please try again.`);
+        return;
+      }
+
 }
 
 /* **************** DO NOT EDIT THE CODE BELOW **************** */
